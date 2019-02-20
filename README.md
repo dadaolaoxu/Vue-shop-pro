@@ -1,4 +1,4 @@
-# shop-pro
+# vue-shop-pro
 
 > A Vue.js project
 
