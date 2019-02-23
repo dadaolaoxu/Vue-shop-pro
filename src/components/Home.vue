@@ -17,32 +17,31 @@
           background-color="#333744"
           text-color="#fff"
           active-text-color="#409EFF"
-          :style="menushow?'width:65px;':'width:200px;'"
           :collapse="menushow"
           :collapse-transition="false"
           :unique-opened="true"
           :router="true"
         >
-          <el-submenu :index="item.id+''" v-for="(item,k) in menuList" :key="item.id">
+          <el-submenu
+            :index="item.id+''"
+            v-for="(item,k) in menuList"
+            :key="item.id"
+            :style="menushow?'width:65px;':'width:200px;'"
+          >
             <template slot="title">
               <i :class="'iconfont icon-' + menuicon[k]"></i>
               <span>{{item.authName}}</span>
             </template>
 
-            <el-menu-item
-              :index="item2.path"
-              v-for="item2 in item.children"
-              :key="item2.id"
-            >
+            <el-menu-item :index="item2.path" v-for="item2 in item.children" :key="item2.id">
               <i class="el-icon-menu"></i>
               <span>{{item2.authName}}</span>
-              
             </el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>
       <el-main>
-        <router-view />
+        <router-view/>
       </el-main>
     </el-container>
   </el-container>
@@ -71,7 +70,7 @@ export default {
       if (res.meta.status !== 200) {
         return this.$message.error(res.meta.msg)
       }
-console.log(res)
+      console.log(res)
       // 把获得好的权限数据赋予给menuList
       this.menuList = res.data
     },
